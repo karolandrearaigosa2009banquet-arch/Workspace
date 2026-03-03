@@ -1,4 +1,4 @@
-## 🌼 **Un poco sobre mí **
+## 🌼 **Un poco sobre mí**
 ## 🌷 *Autora*
 ## 🌻 𝓚𝓪𝓻𝓸𝓵 𝓐𝓷𝓭𝓻𝓮𝓪
 
