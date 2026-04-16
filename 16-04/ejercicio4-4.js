@@ -1,4 +1,4 @@
-let edad =19;
+let edad =11;
 let tienePermiso = false;
 
 if (edad >= 18 ){
