@@ -1,0 +1,94 @@
+.app {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filtros button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filtros button:hover {
+  background: #e5e7eb;
+}
+
+.lista-tareas {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.lista-tareas li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.lista-tareas li.completada span:first-child {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.categoria {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6366f1;
+  background: #eef2ff;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.form-agregar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-agregar input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.form-agregar button {
+  padding: 8px 14px;
+  border: none;
+  background: #6366f1;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.perfil {
+  font-size: 14px;
+  color: #4b5563;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
