@@ -1,0 +1,26 @@
+<h1>que es un componente de react</h1>
+
+<p> Es un codigo reutilizable y independiente que define como se ve y 
+comporta el enlace de el usuario de la pagina
+
+recibe datos de entrada llamados props y devuelve elementos de React 
+que describen lo que se debe ver en la pantalla.</p>
+
+
+
+<h1> Cómo los componentes se relacionan con las etiquetas HTML,
+diferencias y parecidos.</h1>
+
+<p>Los componentes de React se relacionan directamente con el HTML
+porque utilizan etiquetas parecidas (como <h1> o <button>) para 
+definir lo que se muestra en la pantalla. Ambas herramientas 
+coinciden en su función visual y en cómo organizan la interfaz de
+forma jerárquica.
+
+Sin embargo, la diferencia principal radica en su funcionalidad:
+mientras que una etiqueta HTML es solo una instrucción estática del
+navegador, un componente de React es un bloque de código reutilizable.
+Esto significa que un componente puede incluir lógica, recibir datos 
+mediante props y redibujarse automáticamente cuando sus datos cambian,
+todo usando la sintaxis de JSX.</p>
+

@@ -1,0 +1,48 @@
+<h1>Tipos de variables en un componente de React.</h1>
+
+<p> -useState
+    -props
+    -useRef
+    -<input>
+    -const
+    -let
+</p>
+
+
+
+<h1> Qué son los props de un componente. </h1>
+
+Las props son la información que un componente padre le manda a un
+componente hijo para personalizarlo. Son como los ingredientes que
+le pasas a una receta.
+
+Son de solo lectura:
+El componente que las recibe solo las usa, no las puede cambiar.
+
+Sirven para reutilizar: 
+Te permiten usar el mismo componente varias veces con distintos 
+datos (por ejemplo, el mismo botón pero con el texto "Aceptar" en uno
+y "Cancelar" en otro).
+
+<H1>Qué es useState.</H1>
+
+useState es un hook de React que permite a los componentes funcionales
+tener y manejar su propio estado. El estado es básicamente información 
+que puede cambiar con el tiempo y que afecta cómo se ve o se comporta 
+el componente.
+
+<h1>Qué es useEffect.</h1>
+
+useEffect es un hook de React que permite a los componentes funcionales
+realizar efectos secundarios, como suscribirse a eventos, 
+hacer peticiones a un servidor o limpiar recursos cuando el componente
+se desmonta.
+
+<h1>Diferencias entre useState y useEffect.</h1>
+
+<p>useState se utiliza para manejar el estado interno de un componente,
+mientras que useEffect se utiliza para manejar efectos secundarios y 
+realizar acciones después de que el componente se haya renderizado. 
+useState es para almacenar y actualizar datos, mientras que useEffect
+es para ejecutar código que depende de esos datos o de otros factores
+externos.</p>

@@ -1,0 +1,27 @@
+<h1>CSS en tres renglones</h1>
+
+<p>es el lenguaje que define el diseño visual y la apariencia de un pagina
+web. Permite cambiar colores, fuentes, márgenes, tamaños
+y la estructura de los elementos HTML en la pantalla. Gracias a
+CSS, una misma pagina web puede verse  lind y adaptarse a 
+celulares, tabletas y computadoras.
+
+
+
+<h1>Selectores CSS</h1>
+
+<p> -(p)
+    -(#mi-id)
+    -(.mi-clase)
+    -([type="text"])
+    -(div > p)
+
+    
+
+<p>Como  una etiqueta puede ser modificada por multiples sectores
+aplicando CSS</p>
+
+<p>Una etiqueta puede recibir estilos de múltiples selectores al mismo tiempo:
+si cambian propiedades distintas, el navegador las suma todas si compiten
+por la misma propiedad, gana el selector más específico  
+(ID le gana a Clase, y Clase a Etiqueta).</p>

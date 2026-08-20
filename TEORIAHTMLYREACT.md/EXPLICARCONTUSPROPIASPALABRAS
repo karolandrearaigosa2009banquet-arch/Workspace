@@ -1,0 +1,63 @@
+<h1>Que etiquetas componen la estructura de un archivo HTML</h1>
+<p> -<!DOCTYPE html>
+    -<html></html>
+    -<head></head>
+    -<title></title>
+    -<body></body>
+</p>
+
+
+
+<h1>Que es una etiqueta HTML</h1>
+
+<p>Una etiqueta HTML es un elemento que se utiliza para definir 
+la estructura y el contenido de una página web.</p>
+
+<p>es el elemento fundamental que se utiliza  para estructurar 
+y organizar el contenido en una página web</p>
+
+<p>Las etiquetas HTML se escriben entre corchetes angulares (< >) 
+siempre tiene un inicio y un cierre.</p>
+
+
+
+<h1>Que etiquetas componen la estructura de un archivo HTML</h1>
+<p> -<!DOCTYPE html>
+    -<html></html>
+    -<head></head>
+    -<title></title>
+    -<body></body>
+</p>
+
+
+
+<h1>explicar 5 etiquetas de texto en html</h1>
+
+<h1> a <h6> (Encabezados): Establecen los títulos y subtítulos del texto.
+<h1> es el título principal  y <h6> es el subtítulo </h6> 
+
+<p>(Párrafo): Sirve para agrupar grupos de texto en párrafos.
+ automáticamente se añade un espacio antes y después
+de cada etiqueta <p>.
+
+<strong>(Texto importante): Resalta texto en negrita 
+y le da importancia, significa siendo esta mas llamativa para los que la
+ven
+
+<em> (Énfasis): Muestra el texto en cursiva  y añade intensidad
+a las palabras escogidas.
+
+<span>(Contenedor de texto en línea): Permite aplicar estilos (CSS) o 
+manipular mediante JavaScript algo  determinado de texto, sin 
+alterar la estructura ni introducir saltos de línea.
+
+
+
+<h1>Como funciona un link en html y que etiquetas se usan</h1>
+
+<p>se hace con un hipervinculo que dirige a la otra pagina web,
+o una imagen, entre otras cosas, se hace con la etiqueta <a> y se le
+agrega el atributo href que es el que contiene la direccion de la
+pagina web a la que se quiere dirigir, ademas de que se puede agregar
+el atributo target para abrir en otra pestaña o ventana.</p>
+
