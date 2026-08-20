@@ -12,9 +12,11 @@ const tareasIniciales = [
 function App() {
   const [tareas, setTareas] = useState(tareasIniciales);
   const [filtro, setFiltro] = useState('todas');
+  const [contador, setContador] = useState(0);
 
   useEffect(() => {
-    console.log('App montada correctamente');
+    console.log('Renderizando App, contador:', contador);
+    setContador(contador + 1);
   }, []);
 
   const tareasFiltradas = tareas.filter((tarea) => {
