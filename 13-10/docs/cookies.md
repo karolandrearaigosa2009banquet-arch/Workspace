@@ -24,16 +24,17 @@ Una cookie es un dato pequeño (clave=valor) que el servidor le pide al navegado
 
 ### 3. Atributos
 
-- **`Expires` / `Max-Age`**: fecha absoluta / segundos de vida. Sin ninguno es una **cookie de sesión**, que se borra al cerrar el navegador. Ej.: `Set-Cookie: id=abc; Max-Age=3600`.
-- **`Domain` / `Path`**: a qué dominio y rutas se envía. Sin `Domain`, solo el host exacto que la creó; con `Domain=ejemplo.com` también viaja a sus subdominios. Ej.: `Set-Cookie: id=abc; Domain=ejemplo.com; Path=/app`.
-- **`Secure`**: solo se envía por HTTPS. En un sitio `http://` el navegador la rechaza (salvo `localhost`). Ej.: `Set-Cookie: id=abc; Secure`.
-- **`HttpOnly`**: JS no puede leerla; `document.cookie` no la muestra. Clave contra XSS porque un script inyectado no puede robarla. Ej.: `Set-Cookie: id=abc; HttpOnly`.
+- **`Expires` / `Max-Age`**: fecha absoluta / segundos de vida. Sin ninguno es una **cookie de sesión**, que se borra al cerrar el navegador. Si se omiten, la cookie no caduca por tiempo. Ej.: `Set-Cookie: id=abc; Max-Age=3600`.
+- **`Domain` / `Path`**: a qué dominio y rutas se envía. Sin `Domain`, solo el host exacto que la creó; con `Domain=ejemplo.com` también viaja a sus subdominios. Sin `Path`, se usa la ruta del recurso que la creó (no toda la web). Ej.: `Set-Cookie: id=abc; Domain=ejemplo.com; Path=/app`.
+- **`Secure`**: solo se envía por HTTPS. En un sitio `http://` el navegador la rechaza (salvo `localhost`). Si se omite, la cookie también viaja por HTTP sin cifrar y puede ser interceptada. Ej.: `Set-Cookie: id=abc; Secure`.
+- **`HttpOnly`**: JS no puede leerla; `document.cookie` no la muestra. Clave contra XSS porque un script inyectado no puede robarla. Si se omite, cualquier script de la página puede leerla. Ej.: `Set-Cookie: id=abc; HttpOnly`.
 - **`SameSite`**:
   - `Strict`: nunca viaja en contexto cross-site. Si llegas desde un enlace externo, la primera petición va sin cookie (apareces "deslogueado"). En un `<iframe>` de otro sitio no viaja.
   - `Lax` (por defecto en navegadores modernos): viaja en navegación de nivel superior con método seguro (clic en un enlace externo, GET), pero no en `<iframe>`, `fetch` ni formularios POST cross-site.
   - `None`: viaja siempre, incluso en iframes de otros sitios. Exige `Secure`.
+  - Si se omite `SameSite`, los navegadores modernos aplican `Lax`.
   - Ej.: `Set-Cookie: id=abc; SameSite=Lax; Secure`.
-- **`Partitioned` (CHIPS)**: guarda la cookie de terceros separada por el sitio superior, de modo que un widget embebido (chat, mapa) mantiene estado sin poder rastrear al usuario entre sitios distintos. Ej.: `Set-Cookie: id=abc; Secure; SameSite=None; Partitioned`.
+- **`Partitioned` (CHIPS)**: guarda la cookie de terceros separada por el sitio superior, de modo que un widget embebido (chat, mapa) mantiene estado sin poder rastrear al usuario entre sitios distintos. Si se omite, la cookie de terceros no se separa por sitio y es bloqueada o permite rastreo. Ej.: `Set-Cookie: id=abc; Secure; SameSite=None; Partitioned`.
 
 ### 4. Primera parte vs. terceros
 
