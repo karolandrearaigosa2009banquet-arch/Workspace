@@ -1,0 +1,12 @@
+body { margin: 0; font-family: system-ui, sans-serif; background: #fff; color: #222; }
+body[data-tema='oscuro'] { background: #1b1b1f; color: #eee; }
+.layout { display: flex; min-height: 100vh; }
+.indice { width: 280px; padding: 1rem; border-right: 1px solid #8884; box-sizing: border-box; }
+.indice h1 { font-size: 1.2rem; }
+.indice nav { display: flex; flex-direction: column; gap: .4rem; margin-top: 1rem; }
+.indice nav button { text-align: left; padding: .5rem; border: 1px solid #8886; border-radius: 6px; background: transparent; color: inherit; cursor: pointer; }
+.indice nav button.activo { background: #646cff; color: #fff; }
+.contenido { flex: 1; padding: 1rem 2rem; max-width: 900px; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #8886; padding: .4rem .6rem; }
+pre { background: #8883; padding: .8rem; overflow-x: auto; }
