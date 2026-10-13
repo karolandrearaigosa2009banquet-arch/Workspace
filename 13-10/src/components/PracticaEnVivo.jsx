@@ -56,10 +56,30 @@ function TablaCookies({ cookies }) {
   );
 }
 
+const HTML_ATAQUE = `<form action="https://sitio-victima.com/api/transferir-dinero" method="POST" id="f">
+  <input type="hidden" name="destino" value="cuenta-del-atacante">
+  <input type="hidden" name="monto" value="1000">
+</form>
+<script>document.getElementById("f").submit();</script>`;
+
+// Simulación 100 % local: no se envía ninguna petición real.
+function simularCsrf(sameSite) {
+  const cookieViaja = sameSite === 'None'; // POST cross-site: Lax y Strict no la envían
+  return {
+    cookieViaja,
+    exito: cookieViaja,
+    texto: cookieViaja
+      ? 'El navegador adjunta la cookie de sesión. El servidor cree que la víctima pidió la transferencia: ATAQUE EXITOSO.'
+      : `Con SameSite=${sameSite} el navegador NO adjunta la cookie en un POST cross-site. El servidor responde 401: ATAQUE BLOQUEADO.`,
+  };
+}
+
 export default function PracticaEnVivo() {
   const [cookies, setCookies] = useState([]);
   const [logB, setLogB] = useState([]);
   const [storage, setStorage] = useState([]);
+  const [sameSite, setSameSite] = useState('None');
+  const [resultadoD, setResultadoD] = useState(null);
 
   const refrescar = useCallback(async () => {
     setCookies(await leerCookies());
@@ -111,6 +131,24 @@ export default function PracticaEnVivo() {
         Cookie actual: <code>tema={getCookie('tema') ?? 'null'}</code>. Recarga la página y se mantiene.
       </p>
       <button onClick={() => { deleteCookie('tema'); refrescar(); }}>deleteCookie("tema")</button>
+
+      <h3>Ejercicio D — Simulación de CSRF (local, sin peticiones reales)</h3>
+      <p>HTML hipotético del sitio malicioso (solo se muestra, no se ejecuta):</p>
+      <pre>{HTML_ATAQUE}</pre>
+      <label>
+        Cookie de sesión de la víctima con{' '}
+        <select value={sameSite} onChange={(e) => { setSameSite(e.target.value); setResultadoD(null); }}>
+          <option value="None">SameSite=None (o sin protección)</option>
+          <option value="Lax">SameSite=Lax</option>
+          <option value="Strict">SameSite=Strict</option>
+        </select>
+      </label>{' '}
+      <button onClick={() => setResultadoD(simularCsrf(sameSite))}>Simular ataque</button>
+      {resultadoD && (
+        <pre>
+          {`POST /api/transferir-dinero (origen: sitio-malicioso.com)\nCookie enviada: ${resultadoD.cookieViaja ? 'sí' : 'no'}\n→ ${resultadoD.texto}`}
+        </pre>
+      )}
 
       <h3>Ejercicio E — Auditoría de esta página</h3>
       <p>Claves en Local Storage ({storage.length}):</p>
