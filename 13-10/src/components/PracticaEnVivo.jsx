@@ -107,24 +107,28 @@ export default function PracticaEnVivo() {
 
   return (
     <section>
-      <hr />
-      <h2>Práctica en vivo</h2>
+      <h2 className="titulo-practica">Práctica en vivo</h2>
 
+      <div className="tarjeta">
       <h3>Ejercicio A — Cookies reales de esta página</h3>
       <button onClick={refrescar}>Actualizar</button>
-      <TablaCookies cookies={cookies} />
+      <div className="tabla-scroll"><TablaCookies cookies={cookies} /></div>
       <p>
         <code>sesionDemo</code> tiene <code>Expires = Session</code>; <code>visitas</code> tiene fecha fija (7 días).
         Ninguna es <code>HttpOnly</code>, por eso ambas aparecen en <code>document.cookie</code>:
       </p>
       <pre>{document.cookie || '(vacío)'}</pre>
 
+      </div>
+      <div className="tarjeta">
       <h3>Ejercicio B — Crear, leer y borrar con JavaScript</h3>
       <button onClick={ejecutarB}>Ejecutar las 4 líneas</button>
       {logB.length > 0 && (
         <pre>{logB.map(([codigo, res]) => `${codigo}\n  → ${res || '(cadena vacía)'}`).join('\n')}</pre>
       )}
 
+      </div>
+      <div className="tarjeta">
       <h3>Ejercicio C — Selector de tema (persiste al recargar)</h3>
       <SelectorTema />
       <p>
@@ -132,6 +136,8 @@ export default function PracticaEnVivo() {
       </p>
       <button onClick={() => { deleteCookie('tema'); refrescar(); }}>deleteCookie("tema")</button>
 
+      </div>
+      <div className="tarjeta">
       <h3>Ejercicio D — Simulación de CSRF (local, sin peticiones reales)</h3>
       <p>HTML hipotético del sitio malicioso (solo se muestra, no se ejecuta):</p>
       <pre>{HTML_ATAQUE}</pre>
@@ -145,11 +151,13 @@ export default function PracticaEnVivo() {
       </label>{' '}
       <button onClick={() => setResultadoD(simularCsrf(sameSite))}>Simular ataque</button>
       {resultadoD && (
-        <pre>
+        <pre className={resultadoD.exito ? 'peligro' : 'seguro'}>
           {`POST /api/transferir-dinero (origen: sitio-malicioso.com)\nCookie enviada: ${resultadoD.cookieViaja ? 'sí' : 'no'}\n→ ${resultadoD.texto}`}
         </pre>
       )}
 
+      </div>
+      <div className="tarjeta">
       <h3>Ejercicio E — Auditoría de esta página</h3>
       <p>Claves en Local Storage ({storage.length}):</p>
       <pre>
@@ -157,6 +165,7 @@ export default function PracticaEnVivo() {
           ? storage.map((s) => `${s.clave} (${s.longitud} caracteres)`).join('\n')
           : 'Ninguna. Esta página no usa Supabase; en el proyecto real aparecería sb-<ref>-auth-token.'}
       </pre>
+      </div>
     </section>
   );
 }
