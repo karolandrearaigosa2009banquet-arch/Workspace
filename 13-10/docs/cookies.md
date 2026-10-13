@@ -138,6 +138,17 @@ export function deleteCookie(nombre, opciones = {}) {
 }
 ```
 
+Prueba del helper (ejecutado en un DOM real con jsdom):
+
+```
+setCookie("tema", "oscuro", 365, { sameSite: "Lax" })
+getCookie("tema")      -> "oscuro"
+getCookie("noExiste")  -> null
+document.cookie        -> "tema=oscuro"
+deleteCookie("tema")
+getCookie("tema")      -> null
+```
+
 > Captura: `./img/ejercicioC.png` (selector de tema funcionando y cookie `tema` visible en DevTools tras recargar) — pendiente de tomar.
 
 ### Ejercicio D — CSRF (solo análisis)
