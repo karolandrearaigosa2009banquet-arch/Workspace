@@ -93,6 +93,17 @@ document.cookie = "tema=; path=/; max-age=0";           // la borra
 console.log(document.cookie);                           // "tema=oscuro" ya no aparece
 ```
 
+Resultado obtenido al ejecutar las líneas en un DOM real (jsdom, sin otras cookies en la página):
+
+| Línea | Resultado |
+|---|---|
+| `document.cookie = "tema=oscuro; ..."` | crea la cookie |
+| 1.er `console.log(document.cookie)` | `"tema=oscuro"` |
+| `document.cookie = "tema=; ...; max-age=0"` | borra la cookie |
+| 2.º `console.log(document.cookie)` | `""` (cadena vacía) |
+
+En una página con otras cookies visibles, el segundo `log` mostraría solo esas otras. En la página, la sección "Práctica en vivo" → Ejercicio B tiene un botón que ejecuta las 4 líneas.
+
 - No existe `document.cookie = ""` que borre todo porque `document.cookie` es un *setter* que procesa una sola cookie por asignación; no es una cadena que se sobrescribe.
 - Hay que repetir el mismo `path` (y `domain`) porque la identidad de una cookie es la tupla nombre + dominio + path; con otro path se crearía una cookie distinta en lugar de borrar la original.
 
