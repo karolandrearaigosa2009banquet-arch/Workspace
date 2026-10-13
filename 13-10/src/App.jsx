@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import docs from '../docs/cookies.md?raw';
 import SelectorTema from './components/SelectorTema.jsx';
+import PracticaEnVivo from './components/PracticaEnVivo.jsx';
 
 // Cada "## " del documento es una página del índice.
 function dividirSecciones(md) {
@@ -35,6 +36,7 @@ export default function App() {
       </aside>
       <main className="contenido">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{secciones[actual].contenido}</ReactMarkdown>
+        {secciones[actual].titulo.startsWith('Parte 2') && <PracticaEnVivo />}
       </main>
     </div>
   );
