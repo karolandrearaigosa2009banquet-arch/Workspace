@@ -85,6 +85,8 @@ Una cookie es un dato pequeño (clave=valor) que el servidor le pide al navegado
 
 Anotar tras la captura: cuál cookie es de sesión (`Expires = Session`), cuál tiene fecha fija, cuáles tienen `HttpOnly`, y el resultado de `document.cookie` en consola. En github.com, por ejemplo, `user_session`/`__Host-user_session_same_site` están `HttpOnly` y por tanto **no** aparecen en `document.cookie`.
 
+![alt text](image.png)
+
 ### Ejercicio B — Crear y leer cookies con JS
 
 ```js
@@ -152,6 +154,8 @@ getCookie("tema")      -> null
 
 > Captura: `./img/ejercicioC.png` (selector de tema funcionando y cookie `tema` visible en DevTools tras recargar) — pendiente de tomar.
 
+![alt text](image-1.png)
+
 ### Ejercicio D — CSRF (solo análisis)
 
 HTML hipotético de un sitio malicioso:
@@ -166,6 +170,8 @@ HTML hipotético de un sitio malicioso:
 
 - Con `SameSite=Strict`: el ataque **no** funciona, la cookie no se envía en ninguna petición cross-site.
 - Con `SameSite=Lax`: **tampoco** funciona para este caso, porque es un POST cross-site (Lax solo envía cookies en navegaciones GET de nivel superior). Seguiría siendo vulnerable si el endpoint aceptara GET para cambiar estado.
+
+![alt text](image-2.png)
 
 ### Ejercicio E — Auditoría del proyecto
 
