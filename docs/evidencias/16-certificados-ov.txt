@@ -1,0 +1,33 @@
+# Ejecutado el 2026-10-19 20:16 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+# Busco certificados donde el sujeto incluya una organización (O=), señal de validación OV/EV, y los comparo con uno DV.
+$ openssl s_client -connect www.paypal.com:443 -servername www.paypal.com | openssl x509 -noout -subject -issuer -dates
+subject=jurisdictionC = US, jurisdictionST = Delaware, businessCategory = Private Organization, serialNumber = 3014267, C = US, ST = California, L = San Jose, O = "PayPal, Inc.", CN = www.paypal.com
+issuer=C = US, O = DigiCert Inc, CN = DigiCert EV RSA CA G2
+notBefore=Aug 28 00:00:00 2026 GMT
+notAfter=Mar 14 23:59:59 2027 GMT
+
+$ openssl s_client -connect www.bancolombia.com:443 -servername www.bancolombia.com | openssl x509 -noout -subject -issuer -dates
+subject=businessCategory = Private Organization, serialNumber = 8396404, jurisdictionC = CO, C = CO, ST = Antioquia, L = Medell\C3\ADn, O = BANCOLOMBIA S.A., CN = www.bancolombia.com
+issuer=C = BE, O = GlobalSign nv-sa, CN = GlobalSign GCC R3 EV TLS CA 2025
+notBefore=Mar  4 14:01:17 2026 GMT
+notAfter=Apr  5 14:01:16 2027 GMT
+
+$ openssl s_client -connect www.dian.gov.co:443 -servername www.dian.gov.co | openssl x509 -noout -subject -issuer -dates
+subject=jurisdictionC = CO, businessCategory = Government Entity, serialNumber = Government Entity, C = CO, L = BOGOTA, O = U A E DIRECCION DE IMPUESTOS Y ADUANAS NACIONALES, CN = dian.gov.co
+issuer=C = US, O = DigiCert Inc, CN = GeoTrust EV RSA CA G2
+notBefore=Jun 18 00:00:00 2026 GMT
+notAfter=Jan  2 23:59:59 2027 GMT
+
+$ openssl s_client -connect www.mintic.gov.co:443 -servername www.mintic.gov.co | openssl x509 -noout -subject -issuer -dates
+subject=CN = www.mintic.gov.co
+issuer=C = US, O = Google Trust Services, CN = WE1
+notBefore=Oct 12 04:43:52 2026 GMT
+notAfter=Jan 10 05:43:50 2027 GMT
+
+$ openssl s_client -connect www.microsoft.com:443 -servername www.microsoft.com | openssl x509 -noout -subject -issuer -dates
+subject=C = US, ST = WA, L = Redmond, O = Microsoft Corporation, CN = www.microsoft.com
+issuer=C = US, O = Microsoft Corporation, CN = Microsoft TLS G2 RSA CA OCSP 04
+notBefore=Jan 22 19:55:21 2026 GMT
+notAfter=Jan 17 19:55:21 2027 GMT
+
