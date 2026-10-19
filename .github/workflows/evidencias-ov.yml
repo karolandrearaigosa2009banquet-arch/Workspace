@@ -1,0 +1,28 @@
+name: Evidencia extra (certificado con validación de organización)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  evidencias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comparar certificados de varios sitios
+        run: |
+          set +e
+          mkdir -p docs/evidencias && cd docs/evidencias
+          { echo "# Ejecutado el $(date -u '+%Y-%m-%d %H:%M UTC') en un runner de GitHub Actions ($(lsb_release -ds))"; echo
+            echo '# Busco certificados donde el sujeto incluya una organización (O=), señal de validación OV/EV, y los comparo con uno DV.'
+            for h in www.paypal.com www.bancolombia.com www.dian.gov.co www.mintic.gov.co www.microsoft.com; do
+              echo "\$ openssl s_client -connect $h:443 -servername $h | openssl x509 -noout -subject -issuer -dates"
+              echo | timeout 15 openssl s_client -connect $h:443 -servername $h 2>/dev/null | openssl x509 -noout -subject -issuer -dates
+              echo
+            done; } > 16-certificados-ov.txt 2>&1
+      - name: Guardar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/evidencias
+          git commit -m "docs: evidencia de certificados con organización" || echo "sin cambios"
+          git pull --rebase -q origin main; git push
