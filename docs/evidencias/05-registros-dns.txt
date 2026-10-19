@@ -1,0 +1,70 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ dig github.com AAAA +noall +answer
+
+$ dig www.github.com CNAME +noall +answer
+www.github.com.		1800	IN	CNAME	github.com.
+
+$ dig github.com NS +noall +answer
+github.com.		44	IN	NS	dns1.p08.nsone.net.
+github.com.		44	IN	NS	dns2.p08.nsone.net.
+github.com.		44	IN	NS	dns3.p08.nsone.net.
+github.com.		44	IN	NS	dns4.p08.nsone.net.
+github.com.		44	IN	NS	ns-1283.awsdns-32.org.
+github.com.		44	IN	NS	ns-1707.awsdns-21.co.uk.
+github.com.		44	IN	NS	ns-421.awsdns-52.com.
+github.com.		44	IN	NS	ns-520.awsdns-01.net.
+
+$ dig github.com SOA +noall +answer
+github.com.		964	IN	SOA	dns1.p08.nsone.net. hostmaster.nsone.net. 1656468023 43200 7200 1209600 3600
+
+$ dig github.com TXT +noall +answer
+github.com.		299	IN	TXT	"google-site-verification=82Le34Flgtd15ojYhHlGF_6g72muSjamlMVThBOJpks"
+github.com.		299	IN	TXT	"adobe-idp-site-verification=b92c9e999aef825edc36e0a3d847d2dbad5b2fc0e05c79ddd7a16139b48ecf4b"
+github.com.		299	IN	TXT	"loom-site-verification=f3787154f1154b7880e720a511ea664d"
+github.com.		299	IN	TXT	"docusign=087098e3-3d46-47b7-9b4e-8a23028154cd"
+github.com.		299	IN	TXT	"jamf-site-verification=XtaPNIYghF_e_xRDI8CjgQ"
+github.com.		299	IN	TXT	"openai-domain-verification=dv-3nh33eQwdkotMIAzLrIDVZo1"
+github.com.		299	IN	TXT	"facebook-domain-verification=39xu4jzl7roi7x0n93ldkxjiaarx50"
+github.com.		299	IN	TXT	"anthropic-domain-verification-4az7qn=if8YWuRRqwLycGJDooumzHtxm"
+github.com.		299	IN	TXT	"v=spf1 ip4:192.30.252.0/22 include:spf.protection.outlook.com include:_netblocks.google.com include:_netblocks2.google.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com include:sendgrid.net ip4:62.253.2" "27.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ~all"
+github.com.		299	IN	TXT	"shopify-verification-code=t1YPwcmvnxZyBycaCpk1MPyWoFs72o"
+github.com.		299	IN	TXT	"calendly-site-verification=at0DQARi7IZvJtXQAWhMqpmIzpvoBNF7aam5VKKxP"
+github.com.		299	IN	TXT	"apple-domain-verification=RyQhdzTl6Z6x8ZP4"
+github.com.		299	IN	TXT	"cursor-domain-verification-gtfwmt=1rfLOtiTngX5QSxD5HvNKTvm3"
+github.com.		299	IN	TXT	"MS=ms44452932"
+github.com.		299	IN	TXT	"MS=ms58704441"
+github.com.		299	IN	TXT	"00Dd0000000hHE0=1TBKg000000TN2r"
+github.com.		299	IN	TXT	"stripe-verification=f88ef17321660a01bab1660454192e014defa29ba7b8de9633c69d6b4912217f"
+github.com.		299	IN	TXT	"miro-verification=d2e174fdb00c71e0bcf58f8e58c3da2dd80dcfa9"
+github.com.		299	IN	TXT	"TAILSCALE-xOzoDvFUzZr5YYVCQFuD"
+github.com.		299	IN	TXT	"google-site-verification=UTM-3akMgubp6tQtgEuAkYNYLyYAvpTnnSrDMWoDR3o"
+github.com.		299	IN	TXT	"krisp-domain-verification=ZlyiK7XLhnaoUQb2hpak1PLY7dFkl1WE"
+github.com.		299	IN	TXT	"MS=6BF03E6AF5CB689E315FB6199603BABF2C88D805"
+github.com.		299	IN	TXT	"atlassian-domain-verification=jjgw98AKv2aeoYFxiL/VFaoyPkn3undEssTRuMg6C/3Fp/iqhkV4HVV7WjYlVeF8"
+github.com.		299	IN	TXT	"serval-domain-verification-ydryhj=qbkiEakpwEpTvHh5fIiCqtaue"
+
+$ dig _dmarc.github.com TXT +noall +answer
+_dmarc.github.com.	300	IN	TXT	"v=DMARC1; p=quarantine; sp=reject; pct=100; rua=mailto:dmarc@github.com; ruf=mailto:dmarc@github.com; fo=1"
+
+$ dig github.com CAA +noall +answer
+github.com.		1800	IN	CAA	0 issue "digicert.com"
+github.com.		1800	IN	CAA	0 issue "globalsign.com"
+github.com.		1800	IN	CAA	0 issue "letsencrypt.org"
+github.com.		1800	IN	CAA	0 issue "sectigo.com"
+github.com.		1800	IN	CAA	0 issuewild "digicert.com"
+github.com.		1800	IN	CAA	0 issuewild "letsencrypt.org"
+github.com.		1800	IN	CAA	0 issuewild "sectigo.com"
+
+$ dig karolandrearaigosa2009banquet-arch.github.io A +noall +answer
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN A	185.199.108.153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN A	185.199.109.153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN A	185.199.110.153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN A	185.199.111.153
+
+$ dig karolandrearaigosa2009banquet-arch.github.io AAAA +noall +answer
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN AAAA 2606:50c0:8000::153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN AAAA 2606:50c0:8001::153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN AAAA 2606:50c0:8002::153
+karolandrearaigosa2009banquet-arch.github.io. 1800 IN AAAA 2606:50c0:8003::153
+

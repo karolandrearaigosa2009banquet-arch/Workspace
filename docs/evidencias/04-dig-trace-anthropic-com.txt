@@ -1,0 +1,55 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ dig +trace anthropic.com
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.8-Ubuntu <<>> +trace anthropic.com
+;; global options: +cmd
+.			509164	IN	NS	h.root-servers.net.
+.			509164	IN	NS	k.root-servers.net.
+.			509164	IN	NS	e.root-servers.net.
+.			509164	IN	NS	g.root-servers.net.
+.			509164	IN	NS	b.root-servers.net.
+.			509164	IN	NS	d.root-servers.net.
+.			509164	IN	NS	l.root-servers.net.
+.			509164	IN	NS	a.root-servers.net.
+.			509164	IN	NS	f.root-servers.net.
+.			509164	IN	NS	j.root-servers.net.
+.			509164	IN	NS	c.root-servers.net.
+.			509164	IN	NS	i.root-servers.net.
+.			509164	IN	NS	m.root-servers.net.
+;; Received 795 bytes from 127.0.0.53#53(127.0.0.53) in 5 ms
+
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+com.			86400	IN	DS	19718 13 2 8ACBB0CD28F41250A80A491389424D341522D946B0DA0C0291F2D3D7 71D7805A
+com.			86400	IN	RRSIG	DS 8 1 86400 20261031170000 20261018160000 8763 . B9/Lme0S2AtFDfNaodI8j6B6DGlYg1vZd76URAKbQqmuqHk870g+m3N9 yhdiu9LXUTZ9goGhb+MTGV0V5dKB/gyStJjF4rCstt2lDdrXr8QLwGYs tLbdkYXdPoeMXTnpe9Fmglvrj9ZmReTxIId0kP/sA4UZ4jrzDcKXXL7G ncyQ4cnDKs+yOVXPINmfDNSmeSSKHJwKRM1oSvCFdHo5wCkMNWcXf21g 7BleIzOXT8oGAAgHhmaD90F9f5LNLbTz2uvirU5k5nu+m4pBvHqjZOBB q+pG7wwcW30WKCoDE1HHf6i3QTwVEwV+q7pyksrMhHFSCB2VOJn2QAsj OVQkqA==
+;; Received 1173 bytes from 192.58.128.30#53(j.root-servers.net) in 18 ms
+
+;; UDP setup with 2001:502:1ca1::30#53(2001:502:1ca1::30) for anthropic.com failed: network unreachable.
+;; no servers could be reached
+;; UDP setup with 2001:502:1ca1::30#53(2001:502:1ca1::30) for anthropic.com failed: network unreachable.
+;; no servers could be reached
+;; UDP setup with 2001:502:1ca1::30#53(2001:502:1ca1::30) for anthropic.com failed: network unreachable.
+anthropic.com.		172800	IN	NS	isla.ns.cloudflare.com.
+anthropic.com.		172800	IN	NS	randy.ns.cloudflare.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN NSEC3 1 1 0 - CK0Q35HRS4H76G6CHNB9414CJN6S5UPL NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 900 IN RRSIG NSEC3 13 2 900 20261025002615 20261017231615 65344 com. /N6fN5DVPuyLATL2Ja4dJ2NW3hEzenqQS7D9W+3h1zxvdSlTmVLXpce2 b4naOr0/JAvD4mKcI2WPEjH89beg/g==
+JGHJIBTB424QO3QFGJ3TP9CUC63877KE.com. 900 IN NSEC3 1 1 0 - JGHJMU1IGUKF3LJG3FVEK513HP0K43CU NS DS RRSIG
+JGHJIBTB424QO3QFGJ3TP9CUC63877KE.com. 900 IN RRSIG NSEC3 13 2 900 20261025003728 20261017232728 65344 com. WST6N+I3PyOa6ZA4SYRl78WA/YgOt06kNyj26jcdBwvw1mbBxTnI2RZU fTmoZ5594M6B2g1eyoJvDsAeKPpZVg==
+;; Received 716 bytes from 192.33.14.30#53(b.gtld-servers.net) in 34 ms
+
+;; UDP setup with 2803:f800:50::6ca2:c077#53(2803:f800:50::6ca2:c077) for anthropic.com failed: network unreachable.
+anthropic.com.		300	IN	A	160.79.104.10
+;; Received 58 bytes from 172.64.32.119#53(isla.ns.cloudflare.com) in 10 ms
+

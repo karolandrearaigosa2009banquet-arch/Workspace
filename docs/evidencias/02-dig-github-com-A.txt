@@ -1,0 +1,23 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ dig github.com A
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.8-Ubuntu <<>> github.com A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53656
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;github.com.			IN	A
+
+;; ANSWER SECTION:
+github.com.		47	IN	A	140.82.114.3
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Mon Oct 19 00:40:09 UTC 2026
+;; MSG SIZE  rcvd: 55
+

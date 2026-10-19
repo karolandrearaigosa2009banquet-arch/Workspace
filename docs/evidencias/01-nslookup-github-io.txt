@@ -1,0 +1,16 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ nslookup github.io
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	github.io
+Address: 185.199.108.153
+Name:	github.io
+Address: 185.199.109.153
+Name:	github.io
+Address: 185.199.110.153
+Name:	github.io
+Address: 185.199.111.153
+

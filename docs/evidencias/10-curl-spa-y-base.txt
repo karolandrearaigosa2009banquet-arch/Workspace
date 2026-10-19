@@ -1,0 +1,31 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ curl -sI http://karolandrearaigosa2009banquet-arch.github.io/PPI/   (HTTP sin cifrar → debe redirigir a HTTPS)
+HTTP/1.1 301 Moved Permanently
+Connection: keep-alive
+Content-Length: 162
+Server: GitHub.com
+Content-Type: text/html
+Location: https://karolandrearaigosa2009banquet-arch.github.io/PPI/
+X-GitHub-Request-Id: 1E4E:19E2D3:31D8B24:3D07D6F:6AD566F3
+x-github-edge-region: iad
+
+$ curl -sI https://karolandrearaigosa2009banquet-arch.github.io/PPI/dashboard   (una ruta interna que no existe como archivo)
+HTTP/2 404 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6ad566bd-236"
+
+$ curl -sI https://karolandrearaigosa2009banquet-arch.github.io/assets/index.js   (lo que pasaría con un 'base' mal puesto: assets pedidos en la raíz)
+HTTP/2 404 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+etag: "6abcf5c5-239b"
+
+$ curl -sI https://karolandrearaigosa2009banquet-arch.github.io/PPI/404.html
+HTTP/2 200 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+last-modified: Mon, 19 Oct 2026 00:39:25 GMT

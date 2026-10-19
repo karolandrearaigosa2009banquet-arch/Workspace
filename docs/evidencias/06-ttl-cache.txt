@@ -1,0 +1,8 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+# Dos consultas seguidas al mismo resolver (1.1.1.1), separadas por 8 segundos: el TTL baja porque la respuesta sale de la caché.
+$ dig @1.1.1.1 github.com A +noall +answer
+github.com.		26	IN	A	140.82.112.4
+
+$ (8 segundos después) dig @1.1.1.1 github.com A +noall +answer
+github.com.		60	IN	A	140.82.112.3

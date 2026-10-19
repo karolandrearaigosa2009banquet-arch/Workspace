@@ -1,0 +1,33 @@
+# Ejecutado el 2026-10-19 00:40 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ dig github.com MX
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.8-Ubuntu <<>> github.com MX
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52682
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 9
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;github.com.			IN	MX
+
+;; ANSWER SECTION:
+github.com.		300	IN	MX	0 github-com.mail.protection.outlook.com.
+
+;; ADDITIONAL SECTION:
+github-com.mail.protection.outlook.com.	10 IN A	52.101.194.13
+github-com.mail.protection.outlook.com.	10 IN A	52.101.40.53
+github-com.mail.protection.outlook.com.	10 IN A	52.101.60.173
+github-com.mail.protection.outlook.com.	10 IN A	52.101.60.179
+github-com.mail.protection.outlook.com.	10 IN AAAA 2a01:111:f403:f805::2
+github-com.mail.protection.outlook.com.	10 IN AAAA 2a01:111:f403:c95d::
+github-com.mail.protection.outlook.com.	10 IN AAAA 2a01:111:f403:f801::
+github-com.mail.protection.outlook.com.	10 IN AAAA 2a01:111:f403:f904::2
+
+;; Query time: 42 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Mon Oct 19 00:40:09 UTC 2026
+;; MSG SIZE  rcvd: 266
+
