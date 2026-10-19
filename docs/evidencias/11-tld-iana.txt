@@ -1,0 +1,98 @@
+# Ejecutado el 2026-10-19 00:41 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ whois -h whois.iana.org co | head -40   (TLD de código de país: Colombia)
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+domain:       CO
+
+organisation: Ministry of Information and Communications Technologies (MinTIC)
+address:      Edificio Murillo Toro
+address:      Cra.8 #Entre Calles 12A y 12B
+address:      Bogotá D.C. Cundinamarca 111711
+address:      Colombia
+
+contact:      administrative
+name:         Thiago Grijo Dal-Toe
+organisation: Ministry of Information and Communications Technologies (MinTIC)
+address:      Edificio Murillo Toro
+address:      Cra.8 #Entre Calles 12A y 12B
+address:      Bogotá D.C. Cundinamarca 111711
+address:      Colombia
+phone:        +57 (601) 344 3460
+fax-no:       +57 (601) 344 2248
+e-mail:       cctld.co@mintic.gov.co
+
+contact:      technical
+name:         CTO
+organisation: CentralNic
+address:      Saddlers House, 4th Floor
+address:      44 Gutter Lane
+address:      London EC2V 6BR
+address:      United Kingdom of Great Britain and Northern Ireland (the)
+phone:        +44 20 33 88 0600
+fax-no:       +44 20 33 88 0601
+e-mail:       tld.ops@centralnic.com
+
+nserver:      A.REGISTRYDNS.CO 194.169.218.57 2001:67c:13cc:0:0:0:1:57
+nserver:      B.REGISTRYDNS.CO 185.24.64.57 2a04:2b00:13cc:0:0:0:1:57
+nserver:      C.REGISTRYDNS.CO 212.18.248.57 2a04:2b00:13ee:0:0:0:0:57
+nserver:      D.REGISTRYDNS.CO 212.18.249.57 2a04:2b00:13ff:0:0:0:0:57
+ds-rdata:     7786 8 2 eb84f864cbe86e913796d2c8dd81933aa2c94bbcfb73419a42250bc4650b081b
+
+
+$ whois -h whois.iana.org dev | head -30   (TLD genérico patrocinado por una empresa)
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+domain:       DEV
+
+organisation: Charleston Road Registry Inc.
+address:      1600 Amphitheatre Parkway
+address:      Mountain View CA 94043
+address:      United States of America (the)
+
+contact:      administrative
+name:         TLD Admin
+organisation: Google Inc.
+address:      111 8th Avenue
+address:      New York NY 10011
+address:      United States of America (the)
+phone:        +1 404 978 8419
+fax-no:       +1 650 492 5631
+e-mail:       iana-contact@google.com
+
+contact:      technical
+name:         TLD Engineering
+organisation: Google Inc.
+address:      76 Ninth Avenue, 4th Floor
+address:      New York NY 10011
+address:      United States of America (the)
+phone:        +1 404 978 8419
+fax-no:       +1 650 492 5631
+e-mail:       crr-tech@google.com
+
+$ dig +short NS co.
+a.registrydns.co.
+b.registrydns.co.
+c.registrydns.co.
+d.registrydns.co.
+
+$ dig +short NS dev.
+ns-tld2.charlestonroadregistry.com.
+ns-tld3.charlestonroadregistry.com.
+ns-tld1.charlestonroadregistry.com.
+ns-tld5.charlestonroadregistry.com.
+ns-tld4.charlestonroadregistry.com.
+
+$ dig +short NS github.io
+dns1.p05.nsone.net.
+dns2.p05.nsone.net.
+dns3.p05.nsone.net.
+dns4.p05.nsone.net.
+ns-1339.awsdns-39.org.
+ns-1622.awsdns-10.co.uk.
+ns-393.awsdns-49.com.
+ns-692.awsdns-22.net.

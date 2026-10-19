@@ -1,0 +1,20 @@
+# Ejecutado el 2026-10-19 00:41 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ openssl s_client -connect github.com:443 -servername github.com | openssl x509 -noout -subject -issuer -dates
+subject=CN = github.com
+issuer=C = GB, O = Sectigo Limited, CN = Sectigo Public Server Authentication CA DV E36
+notBefore=Sep  1 00:00:00 2026 GMT
+notAfter=Nov 29 23:59:59 2026 GMT
+
+$ openssl s_client -connect anthropic.com:443 -servername anthropic.com | openssl x509 -noout -subject -issuer -dates
+subject=CN = anthropic.com
+issuer=C = US, O = Let's Encrypt, CN = YE1
+notBefore=Sep  5 18:42:32 2026 GMT
+notAfter=Dec  4 18:42:31 2026 GMT
+
+$ openssl s_client -connect karolandrearaigosa2009banquet-arch.github.io:443 -servername karolandrearaigosa2009banquet-arch.github.io | openssl x509 -noout -subject -issuer -dates
+subject=CN = *.github.io
+issuer=C = US, O = Let's Encrypt, CN = YR1
+notBefore=Sep 30 23:44:46 2026 GMT
+notAfter=Dec 29 23:44:45 2026 GMT
+

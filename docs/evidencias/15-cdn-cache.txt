@@ -1,0 +1,20 @@
+# Ejecutado el 2026-10-19 00:41 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+$ curl -sI https://karolandrearaigosa2009banquet-arch.github.io/PPI/  (petición 1)  →  cabeceras de caché del CDN
+server: GitHub.com
+cache-control: max-age=600
+age: 0
+via: 1.1 varnish
+x-served-by: cache-iad-khef600078-IAD
+x-cache: MISS
+x-cache-hits: 0
+
+$ curl -sI https://karolandrearaigosa2009banquet-arch.github.io/PPI/  (petición 2)  →  cabeceras de caché del CDN
+server: GitHub.com
+cache-control: max-age=600
+via: 1.1 varnish
+age: 0
+x-served-by: cache-iad-khef600073-IAD
+x-cache: HIT
+x-cache-hits: 1
+

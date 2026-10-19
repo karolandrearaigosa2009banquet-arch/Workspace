@@ -1,0 +1,15 @@
+# Ejecutado el 2026-10-19 00:41 UTC en un runner de GitHub Actions (Ubuntu 24.04.5 LTS)
+
+# Caso: apunto un dominio inventado a las IPs de GitHub Pages ANTES de que GitHub emita un certificado para él.
+$ curl -sS -o /dev/null --resolve mi-dominio-de-prueba.example:443:185.199.108.153 https://mi-dominio-de-prueba.example/
+curl: (60) SSL: no alternative certificate subject name matches target host name 'mi-dominio-de-prueba.example'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+
+# El certificado que sí se entrega en esa IP es el de *.github.io, que no cubre mi-dominio-de-prueba.example:
+subject=CN = *.github.io
+X509v3 Subject Alternative Name: 
+    DNS:*.github.com, DNS:*.github.io, DNS:*.githubusercontent.com, DNS:github.com, DNS:github.io, DNS:githubusercontent.com
