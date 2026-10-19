@@ -1,0 +1,82 @@
+name: Evidencias del taller de despliegue
+
+# Ejecuta los comandos del taller (DNS, WHOIS, TLS, HTTP) en un servidor real de GitHub
+# y guarda las salidas en docs/evidencias/ para pegarlas en docs/despliegue.md.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evidencias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dig, nslookup y whois
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils whois
+
+      - name: Ejecutar los comandos y guardar cada salida
+        run: |
+          set +e
+          mkdir -p docs/evidencias && cd docs/evidencias
+          SITIO=karolandrearaigosa2009banquet-arch.github.io
+          URL=https://$SITIO/PPI/
+          cabecera() { echo "# Ejecutado el $(date -u '+%Y-%m-%d %H:%M UTC') en un runner de GitHub Actions ($(lsb_release -ds))"; echo; }
+
+          { cabecera; echo '$ nslookup github.io'; nslookup github.io; } > 01-nslookup-github-io.txt 2>&1
+          { cabecera; echo '$ dig github.com A'; dig github.com A; } > 02-dig-github-com-A.txt 2>&1
+          { cabecera; echo '$ dig github.com MX'; dig github.com MX; } > 03-dig-github-com-MX.txt 2>&1
+          { cabecera; echo '$ dig +trace anthropic.com'; dig +trace anthropic.com; } > 04-dig-trace-anthropic-com.txt 2>&1
+
+          {
+            cabecera
+            for consulta in "github.com AAAA" "www.github.com CNAME" "github.com NS" "github.com SOA" "github.com TXT" "_dmarc.github.com TXT" "github.com CAA" "$SITIO A" "$SITIO AAAA"; do
+              echo "\$ dig $consulta +noall +answer"; dig $consulta +noall +answer; echo
+            done
+          } > 05-registros-dns.txt 2>&1
+
+          {
+            cabecera
+            echo '# Dos consultas seguidas al mismo resolver (1.1.1.1), separadas por 8 segundos: el TTL baja porque la respuesta sale de la caché.'
+            echo '$ dig @1.1.1.1 github.com A +noall +answer'; dig @1.1.1.1 github.com A +noall +answer
+            sleep 8
+            echo; echo '$ (8 segundos después) dig @1.1.1.1 github.com A +noall +answer'; dig @1.1.1.1 github.com A +noall +answer
+          } > 06-ttl-cache.txt 2>&1
+
+          { cabecera; echo '$ whois github.com | head -45'; whois github.com | head -45; echo; echo '$ whois nic.co | head -40'; whois nic.co | head -40; } > 07-whois.txt 2>&1
+
+          {
+            cabecera
+            echo "\$ openssl s_client -connect $SITIO:443 -servername $SITIO  (certificado)"
+            echo | openssl s_client -connect $SITIO:443 -servername $SITIO 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName
+            echo; echo '# Versión de TLS y cifrado negociados:'
+            echo | openssl s_client -connect $SITIO:443 -servername $SITIO 2>/dev/null | grep -E 'Protocol|Cipher|Verification|Verify return'
+            echo; echo '# Cadena de certificados:'
+            echo | openssl s_client -connect $SITIO:443 -servername $SITIO -showcerts 2>/dev/null | grep -E '^ *[0-9] s:|^ *i:'
+          } > 08-tls-certificado.txt 2>&1
+
+          {
+            cabecera
+            echo "\$ curl -o /dev/null -s -w '...' $URL   (tiempo de cada etapa)"
+            curl -o /dev/null -s -w 'DNS (resolver el nombre) : %{time_namelookup}s\nTCP (conectar)           : %{time_connect}s\nTLS (handshake)          : %{time_appconnect}s\nPrimer byte (servidor)   : %{time_starttransfer}s\nTotal                    : %{time_total}s\nIP del servidor          : %{remote_ip}\nVersión HTTP             : %{http_version}\nCódigo de respuesta      : %{http_code}\n' $URL
+            echo; echo "\$ curl -sI $URL   (cabeceras de la respuesta)"; curl -sI $URL
+          } > 09-curl-etapas-y-cabeceras.txt 2>&1
+
+          {
+            cabecera
+            echo "\$ curl -sI http://$SITIO/PPI/   (HTTP sin cifrar → debe redirigir a HTTPS)"; curl -sI http://$SITIO/PPI/ | head -8
+            echo; echo "\$ curl -sI ${URL}dashboard   (una ruta interna que no existe como archivo)"; curl -sI ${URL}dashboard | head -6
+            echo; echo "\$ curl -sI https://$SITIO/assets/index.js   (lo que pasaría con un 'base' mal puesto: assets pedidos en la raíz)"; curl -sI https://$SITIO/assets/index.js | head -4
+            echo; echo "\$ curl -sI ${URL}404.html"; curl -sI ${URL}404.html | head -4
+          } > 10-curl-spa-y-base.txt 2>&1
+
+          echo "Listo:"; ls -la
+      - name: Guardar las evidencias en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/evidencias
+          git commit -m "docs: evidencias de comandos del taller de despliegue" || echo "sin cambios"
+          git push
