@@ -1,0 +1,73 @@
+name: Evidencias extra del taller (TLD, certificados, propagación)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evidencias:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar dig y whois
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq dnsutils whois
+      - name: Ejecutar comandos
+        run: |
+          set +e
+          mkdir -p docs/evidencias && cd docs/evidencias
+          SITIO=karolandrearaigosa2009banquet-arch.github.io
+          cabecera() { echo "# Ejecutado el $(date -u '+%Y-%m-%d %H:%M UTC') en un runner de GitHub Actions ($(lsb_release -ds))"; echo; }
+
+          {
+            cabecera
+            echo '$ whois -h whois.iana.org co | head -40   (TLD de código de país: Colombia)'; whois -h whois.iana.org co | head -40
+            echo; echo '$ whois -h whois.iana.org dev | head -30   (TLD genérico patrocinado por una empresa)'; whois -h whois.iana.org dev | head -30
+            echo; echo '$ dig +short NS co.'; dig +short NS co.
+            echo; echo '$ dig +short NS dev.'; dig +short NS dev.
+            echo; echo '$ dig +short NS github.io'; dig +short NS github.io
+          } > 11-tld-iana.txt 2>&1
+
+          {
+            cabecera
+            for h in github.com anthropic.com $SITIO; do
+              echo "\$ openssl s_client -connect $h:443 -servername $h | openssl x509 -noout -subject -issuer -dates"
+              echo | openssl s_client -connect $h:443 -servername $h 2>/dev/null | openssl x509 -noout -subject -issuer -dates
+              echo
+            done
+          } > 12-certificados-comparados.txt 2>&1
+
+          {
+            cabecera
+            echo '# Caso: apunto un dominio inventado a las IPs de GitHub Pages ANTES de que GitHub emita un certificado para él.'
+            echo '$ curl -sS -o /dev/null --resolve mi-dominio-de-prueba.example:443:185.199.108.153 https://mi-dominio-de-prueba.example/'
+            curl -sS -o /dev/null --resolve mi-dominio-de-prueba.example:443:185.199.108.153 https://mi-dominio-de-prueba.example/ 2>&1
+            echo; echo '# El certificado que sí se entrega en esa IP es el de *.github.io, que no cubre mi-dominio-de-prueba.example:'
+            echo | openssl s_client -connect 185.199.108.153:443 -servername mi-dominio-de-prueba.example 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName
+          } > 13-error-certificado-nombre.txt 2>&1
+
+          {
+            cabecera
+            echo '# La misma pregunta a tres resolvers públicos distintos: cada uno tiene su propia caché y su propio TTL restante.'
+            for r in 1.1.1.1 8.8.8.8 9.9.9.9; do echo "\$ dig @$r github.com A +noall +answer"; dig @$r github.com A +noall +answer; echo; done
+            echo '# Lo mismo para el nombre de mi sitio (TTL de 1800 s en el registro A):'
+            for r in 1.1.1.1 8.8.8.8; do echo "\$ dig @$r $SITIO A +noall +answer"; dig @$r $SITIO A +noall +answer; echo; done
+          } > 14-propagacion-resolvers.txt 2>&1
+
+          {
+            cabecera
+            for i in 1 2; do
+              echo "\$ curl -sI https://$SITIO/PPI/  (petición $i)  →  cabeceras de caché del CDN"
+              curl -sI https://$SITIO/PPI/ | grep -iE '^(HTTP|age|x-cache|x-cache-hits|x-served-by|via|cache-control|server):'
+              echo
+            done
+          } > 15-cdn-cache.txt 2>&1
+          ls -la
+      - name: Guardar las evidencias en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/evidencias
+          git commit -m "docs: evidencias extra (TLD, certificados, propagación)" || echo "sin cambios"
+          git pull --rebase -q origin main; git push
